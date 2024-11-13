@@ -5,8 +5,42 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Ex8"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Партнеры" Height="450" Width="800" ShowInTaskbar="False" Icon="/icon.ico" WindowState="Maximized">
     <Grid>
-        
+        <ListView x:Name="header" Height="47" Background="#FFF4E8D3" VerticalAlignment="Top" >
+            <ListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel Orientation="Horizontal"/>
+                </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
+
+            <ListBoxItem>Item 1</ListBoxItem>
+            <ListBoxItem>Item 2</ListBoxItem>
+            <ListBoxItem>Item 3</ListBoxItem>
+            <ListBoxItem>Item 4</ListBoxItem>
+            <ListBoxItem>Item 5</ListBoxItem>
+        </ListView>
+        <ListBox x:Name="partners" AllowDrop="True" Height="387" Margin="0,47,0,0" >
+            
+            <Button Content="Button" Background="#FF67BA80"/>
+            <Button Content="Button"/>
+            <Button Content="Button"/>
+            <Button Content="Button"/>
+            <Button Content="Button"/>
+        </ListBox>
+
+        <ListView x:Name="footer" Height="47" VerticalAlignment="Bottom" Background="#FFF4E8D3" >
+            <ListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel Orientation="Horizontal"/>
+                </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
+
+            <ListBoxItem>Item 2</ListBoxItem>
+            <ListBoxItem>Item 2</ListBoxItem>
+            <ListBoxItem>Item 3</ListBoxItem>
+            <ListBoxItem>Item 4</ListBoxItem>
+            <ListBoxItem>Item 5</ListBoxItem>
+        </ListView>
     </Grid>
 </Window>
