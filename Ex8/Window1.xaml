@@ -1,0 +1,58 @@
+﻿<Window x:Name="addWindow" x:Class="Ex8.Window1"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Ex8"
+        mc:Ignorable="d"
+        Title="Новый партнер" Height="450" Width="800" MaxWidth="800" MinWidth="800" MinHeight="450" MaxHeight="450" WindowStartupLocation="CenterScreen" Icon="/icon.ico">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="797*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="87*"/>
+            <RowDefinition Height="254*"/>
+            <RowDefinition Height="93*"/>
+        </Grid.RowDefinitions>
+        <StackPanel x:Name="header" Orientation="Horizontal" Background="#FFF4E8D3" MaxHeight="80" MinHeight="80" Margin="0,-12,0,246" Grid.RowSpan="2" Grid.ColumnSpan="2">
+            <Image x:Name="logo" Source="/logo.png" Margin="15,10,10,10" VerticalAlignment="Center" Width="38" Height="40"/>
+        </StackPanel>
+        <StackPanel Height="242" VerticalAlignment="Center" Grid.Row="1" Grid.ColumnSpan="2">
+            <StackPanel Height="35" Orientation="Horizontal">
+                <Label Content="Введите наименование:" Width="163" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="14" FontWeight="Bold"/>
+                <TextBox x:Name="partnerName" Text="{Binding partnerName, Mode=TwoWay}" Width="306" Height="20" Margin="27,0,0,0"></TextBox>
+            </StackPanel>
+            <StackPanel Height="35" Orientation="Horizontal">
+                <Label Content="Выберите тип:" Width="90" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Bold"/>
+                <ComboBox x:Name="partnerTypes" ItemsSource="{Binding partnerTypes, Mode=OneWay}" Width="130" Height="20" Padding="6,3,5,3" Margin="100,0,0,0" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Height="35">
+                <Label Content="Введите рейтинг:" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Bold"></Label>
+                <TextBox Text="{Binding rating, Mode=TwoWay}" Width="130" Margin="79,0,0,0" Height="20"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Height="35">
+                <Label Content="Введите адрес: " HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Bold"></Label>
+                <TextBox Text="{Binding address, Mode=TwoWay}" Width="306" Margin="89,0,0,0" Height="20"></TextBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Height="35">
+                <Label Content="Введите ФИО Директора:" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Bold"></Label>
+                <TextBox Text="{Binding directorName, Mode=TwoWay}" Width="306" Margin="30,0,0,0" Height="20"></TextBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Height="35">
+                <Label Content="Введите телефон компании:" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Bold" ></Label>
+                <TextBox Text="{Binding phoneNumber, Mode=TwoWay}" Width="200" Margin="14,0,0,0" Height="20"></TextBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Height="32">
+                <Label Content="Введите email компании:" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Bold"></Label>
+                <TextBox Text="{Binding email, Mode=TwoWay}" Margin="33,0,0,0" Width="200" Height="20"></TextBox>
+            </StackPanel>
+        </StackPanel>
+        <StackPanel x:Name="footer" Orientation="Horizontal" Background="#FFF4E8D3" Grid.Row="1" Margin="0,249,0,0" Grid.RowSpan="2" Grid.ColumnSpan="2">
+            <Button x:Name="backButton" Content="Назад" Background="#FF67BA80" Margin="15,10,10,10" Width="90" Height="35" Click="backButton_Click"/>
+            <Button x:Name="saveButton" Content="Добавить" Background="#FF67BA80" Width="90" Height="35" Click="backButton_Click" IsEnabled="False"/>
+        </StackPanel>
+
+    </Grid>
+</Window>
