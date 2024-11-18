@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Ex8"
         mc:Ignorable="d"
-        Title="Партнеры" Height="704" Width="1203" Icon="/icon.ico" SizeChanged="Window_SizeChanged" ShowInTaskbar="False" WindowStartupLocation="CenterScreen" WindowStyle="ThreeDBorderWindow" MinWidth="1205" MinHeight="704">
+        Title="Партнеры" Height="704" Width="1203" Icon="/icon.ico" ShowInTaskbar="False" WindowStartupLocation="CenterScreen" WindowStyle="ThreeDBorderWindow" MinWidth="1203" MinHeight="704" MaxHeight="704" MaxWidth="1203">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="41*"/>
@@ -18,25 +18,28 @@
             <Label x:Name="headerLabel" Content="Список партнеров" FontSize="24" Height="44" Width="971" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" />
         </StackPanel>
         <ListBox x:Name="partnersList" AllowDrop="True" Margin="0,2,0,0" Grid.Row="1" BorderThickness="0,0,0,1" >
-            <ListBoxItem x:Name="itemExample" FontSize="20" Padding="4,10,4,1" Width="1162" FontWeight="Bold" VerticalAlignment="Bottom" MouseDoubleClick="itemExample_MouseDoubleClick">
-                <StackPanel Margin="0,0,-10,0">
-                    <StackPanel Orientation="Horizontal" Width="1158">
-                        <Label x:Name="partnerType" Content="{Binding partnerType}"></Label>
-                        <Label Content="|"></Label>
-                        <Label x:Name="partnerName" Content="{Binding partnerName}"></Label>
-                        <Label x:Name="partnerDiscont" Content="{Binding partnerDiscont}" HorizontalContentAlignment="Right" Width="823"/>
-                    </StackPanel>
-                    <StackPanel>
-                        <Label x:Name="directorName" Content="{Binding directorName}" Width="1149" HorizontalAlignment="Left" FontSize="14"></Label>
-                        <Label x:Name="phoneNumber" Content="{Binding phoneNumber}" Width="1149" HorizontalAlignment="Left" FontSize="14"></Label>
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal">
-                        <Label Content="Рейтинг:" FontSize="14"></Label>
-                        <Label x:Name="rating" Content="{Binding rating}" FontSize="14"></Label>
-                    </StackPanel>
-                </StackPanel>
-            </ListBoxItem>
-
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <ListBoxItem MouseDoubleClick="itemExample_MouseDoubleClick" MouseDown="itemExample_MouseDown" FontSize="20" Padding="4,10,4,1" Width="1162" FontWeight="Bold" VerticalAlignment="Bottom" BorderThickness="2,2,2,2" BorderBrush="Black">
+                        <StackPanel Margin="0,0,-10,0">
+                            <StackPanel Orientation="Horizontal" Width="1158">
+                                <Label Content="{Binding PartnerType}" />
+                                <Label Content="|" />
+                                <Label Content="{Binding PartnerName}" />
+                                <Label Content="{Binding partnerDiscont}" HorizontalContentAlignment="Right" Width="823" />
+                            </StackPanel>
+                            <StackPanel>
+                                <Label Content="{Binding director}" Width="1149" HorizontalAlignment="Left" FontSize="14" />
+                                <Label Content="{Binding phoneNumber}" Width="1149" HorizontalAlignment="Left" FontSize="14" />
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <Label Content="Рейтинг:" FontSize="14" />
+                                <Label Content="{Binding rating}" FontSize="14" />
+                            </StackPanel>
+                        </StackPanel>
+                    </ListBoxItem>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
         </ListBox>
 
         <StackPanel x:Name="footer" Orientation="Horizontal" Background="#FFF4E8D3" Grid.Row="2" Height="80" VerticalAlignment="Center">

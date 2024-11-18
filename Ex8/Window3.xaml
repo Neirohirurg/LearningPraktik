@@ -1,0 +1,18 @@
+﻿<Window x:Class="Ex8.Window3"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Ex8"
+        mc:Ignorable="d"
+        Title="Внимание" Height="101" Width="250" MinWidth="250" MaxWidth="250" MinHeight="118" MaxHeight="118" WindowStyle="None" WindowStartupLocation="CenterScreen">
+    <Grid Height="146" VerticalAlignment="Center" MinWidth="250" MaxWidth="250" MinHeight="146" MaxHeight="146">
+        <StackPanel Margin="0,28,0,24">
+            <Label Content="Вы хотите отменить изменения?" Height="29" Width="207" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+            <StackPanel Orientation="Horizontal" Height="53">
+                <Button x:Name="yesButton" Background="#FF67BA80" Width="70" Height="20" Margin="39,0,0,0" Content="Да" Click="YesButton_Click"/>
+                <Button x:Name="noButton" Background="#FF67BA80" Width="70" Height="20" Margin="31,0,0,0" Content="Нет" Click="NoButton_Click"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>

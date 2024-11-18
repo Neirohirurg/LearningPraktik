@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,34 +25,27 @@ namespace Ex8
     {
         private Window1 window1;
         private Window2 window2;
+        private DataService DataService;
 
         public MainWindow()
         {
-            InitializeComponent();       
-        }
+            InitializeComponent();
 
-        private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
-        {
-            ChangeSizeHeader();
-/*            ChangeSizeFooter();*/
-        }
-        
-        public void ChangeSizeHeader()
-        {
-            this.headerLabel.Width = this.Width - (this.logo.Width * 2 + (this.logo.Margin.Right + this.logo.Margin.Left));
-            this.header.Height = this.Height * 0.08;
+            this.DataService = new DataService();
+            List<Partner> partners = DataService.GetPartners();
+            this.partnersList.ItemsSource = partners;
         }
 
         private void addButton_Click(object sender, RoutedEventArgs e)
         {
             if (this.window1 == null || !this.window1.IsLoaded)
             {
-                window1 = new Window1();
-                window1.Show();
+                this.window1 = new Window1();
+                this.window1.Show();
             }
             else
             {
-                window1.Activate();
+                this.window1.Activate();
             }
         }
 
@@ -58,25 +53,39 @@ namespace Ex8
         {
             if (this.window2 == null || !this.window2.IsLoaded)
             {
-                window2 = new Window2();
-                window2.Show();
+                this.window2 = new Window2();
+                UpdateData(sender, this.window2);
+
+                this.window2.partnerTypes.DataContext = DataService.PartnerTypes;
+                this.window2.Show();
             }
             else
             {
                 this.window2.Activate();
             }
+
         }
 
-    }
-
-
-    class EditorDB
-    {
-
-
-        public EditorDB()
+        private void UpdateData(object sender, Window window)
         {
+            ListBoxItem selectedPartner = (ListBoxItem)sender;
 
+            Partner partner = (Partner)selectedPartner.DataContext;
+
+            window.DataContext = partner;
+            
+        }
+
+        private void InsertData(object sender, Window window)
+        {
+            Partner partner = (Partner)sender;
+            DataService.AddPartner(partner);
+        }
+            
+
+        private void itemExample_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            this.changeButton.IsEnabled = true;
         }
     }
 }
