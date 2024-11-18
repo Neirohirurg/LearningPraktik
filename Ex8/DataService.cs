@@ -12,7 +12,7 @@ namespace Ex8
 {
     class DataService
     {
-        private readonly string _connectionString = "Data Source=89.179.146.97, 1433;Database=company;Persist Security Info=True;User ID =sa; Password=qwerty12345;Pooling=False;Encrypt=True;TrustServerCertificate=True;";
+        private readonly string _connectionString = "Data Source=89.179.146.97, 1433;Database=company;Persist Security Info=True;User ID=sa; Password=;Pooling=False;Encrypt=True;TrustServerCertificate=True;";
         
         public List<string> PartnerTypes = new List<string>();
         public DataService() { }
