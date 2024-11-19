@@ -19,15 +19,19 @@ namespace Ex8
     /// </summary>
     public partial class Window1 : Window
     {
+        private MainWindow _mainWindow;
         private Window3 window3;
         private DataService db;
 
-        public Window1()
+        public Window1(MainWindow mainWindow)
         {
             InitializeComponent();
+            
 
             db = new DataService();
             this.DataContext = new Partner();
+            this._mainWindow = mainWindow;
+            this.partnerTypes.ItemsSource = db.GetPartnersTypes();
         }
 
         private void backButton_Click(object sender, RoutedEventArgs e)
@@ -51,7 +55,11 @@ namespace Ex8
             {
                 Partner partner = (Partner)this.DataContext;
                 bool success = db.AddPartner(partner);
-                if(success) { MessageBox.Show("Запись добавлена"); }
+                if (success) 
+                {                   
+                    UpdatePartnersList();
+                    MessageBox.Show("Запись добавлена"); 
+                }
 
                 this.Close();
             } catch(Exception ex)
@@ -59,6 +67,11 @@ namespace Ex8
                 MessageBox.Show(ex.Message);
             }
             
+        }
+
+        private void UpdatePartnersList()
+        {
+            this._mainWindow.partnersList.ItemsSource = db.GetPartners();
         }
     }
 }

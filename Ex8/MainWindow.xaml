@@ -5,28 +5,32 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Ex8"
         mc:Ignorable="d"
-        Title="Партнеры" Height="704" Width="1203" Icon="/icon.ico" ShowInTaskbar="False" WindowStartupLocation="CenterScreen" WindowStyle="ThreeDBorderWindow" MinWidth="1203" MinHeight="704" MaxHeight="704" MaxWidth="1203">
+        Title="Партнеры" Height="704" Width="1203" Icon="/icon.ico" ShowInTaskbar="False" WindowStyle="ThreeDBorderWindow" MinWidth="1203" MinHeight="704" SizeToContent="Height" WindowState="Maximized" WindowStartupLocation="CenterScreen">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="41*"/>
-            <RowDefinition Height="265*"/>
-            <RowDefinition Height="38*"/>
+            <RowDefinition Height="99*"/>
+            <RowDefinition Height="525*"/>
+            <RowDefinition Height="64*"/>
         </Grid.RowDefinitions>
 
-        <StackPanel x:Name="header" Orientation="Horizontal" Background="#FFF4E8D3" MaxHeight="80" MinHeight="80" Margin="0,0,0,2">
-            <Image x:Name="logo" Source="logo.png" Margin="15,10,10,10" VerticalAlignment="Center" Width="38" Height="40"/>
-            <Label x:Name="headerLabel" Content="Список партнеров" FontSize="24" Height="44" Width="971" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" />
+        <StackPanel x:Name="header" Orientation="Horizontal" Background="#FFF4E8D3" MinHeight="80">
+            <Image x:Name="logo" Source="logo.png" Margin="15,10,10,10" VerticalAlignment="Top" Width="38" Height="40" HorizontalAlignment="Center"/>
+            <Label x:Name="headerLabel" Content="Список партнеров" FontSize="36" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Padding="0,0,0,0" Width="322" Height="53" RenderTransformOrigin="0.501,0.398" VerticalAlignment="Top" />
         </StackPanel>
-        <ListBox x:Name="partnersList" AllowDrop="True" Margin="0,2,0,0" Grid.Row="1" BorderThickness="0,0,0,1" >
+        <ListBox x:Name="partnersList" AllowDrop="True" SelectionChanged="partnersList_SelectionChanged" BorderThickness="3,3,3,4" Margin="0,97,0,0" Grid.RowSpan="2" >
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <ListBoxItem MouseDoubleClick="itemExample_MouseDoubleClick" MouseDown="itemExample_MouseDown" FontSize="20" Padding="4,10,4,1" Width="1162" FontWeight="Bold" VerticalAlignment="Bottom" BorderThickness="2,2,2,2" BorderBrush="Black">
-                        <StackPanel Margin="0,0,-10,0">
+                    <ListBoxItem MouseDoubleClick="itemExample_MouseDoubleClick" FontSize="20" Padding="4,10,4,1" Width="1350" FontWeight="Bold" VerticalAlignment="Top" BorderBrush="Black" HorizontalContentAlignment="Left" Height="NaN" HorizontalAlignment="Right">
+                        <StackPanel x:Name="partners" Margin="0,0,-10,0" HorizontalAlignment="Stretch">
                             <StackPanel Orientation="Horizontal" Width="1158">
                                 <Label Content="{Binding PartnerType}" />
                                 <Label Content="|" />
                                 <Label Content="{Binding PartnerName}" />
-                                <Label Content="{Binding partnerDiscont}" HorizontalContentAlignment="Right" Width="823" />
+                                <Label Content="{Binding discont}" HorizontalContentAlignment="Right" Width="823" HorizontalAlignment="Right" VerticalAlignment="Stretch" />
+                                <Label Content="%" HorizontalContentAlignment="Left" HorizontalAlignment="Left"></Label>
                             </StackPanel>
                             <StackPanel>
                                 <Label Content="{Binding director}" Width="1149" HorizontalAlignment="Left" FontSize="14" />
@@ -42,9 +46,11 @@
             </ListBox.ItemTemplate>
         </ListBox>
 
-        <StackPanel x:Name="footer" Orientation="Horizontal" Background="#FFF4E8D3" Grid.Row="2" Height="80" VerticalAlignment="Center">
+        <StackPanel x:Name="footer" Orientation="Horizontal" Background="#FFF4E8D3" Grid.Row="2" Margin="0,1,0,0">
             <Button x:Name="addButton" Content="Добавить" Background="#FF67BA80" Margin="15,10,10,10" Width="90" Height="35" Click="addButton_Click"/>
-            <Button x:Name="changeButton" Content="Редактировать" Background="#FF67BA80" Margin="10,10,10,10" Width="105" Height="35" IsEnabled="False"/>
+            <Button x:Name="changeButton" Content="Редактировать" Background="#FF67BA80" Margin="10,10,10,10" Width="105" Height="35" IsEnabled="False" Click="changeButton_Click"/>
+            <Button x:Name="historyButton" Content="История" Background="#FF67BA80" Margin="10,10,10,10" Width="105" Height="35" IsEnabled="False" Click="historyButton_Click"/>
+
         </StackPanel>
     </Grid>
 </Window>

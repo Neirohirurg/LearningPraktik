@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Ex8
 {
-    class Partner
+    public class Partner
     {
         public int PartnerID { get; set; }
         public string PartnerType { get; set; }
@@ -17,6 +17,7 @@ namespace Ex8
         public string address { get; set; }
         public string INN { get; set; }
         public int rating { get; set; }
+        public int discont { get; set; }
         
     }
 }

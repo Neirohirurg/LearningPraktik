@@ -6,10 +6,12 @@ using System.Threading.Tasks;
 
 namespace Ex8
 {
-    class Product
+    public class Product
     {
         public int ProductId { get; set; }
         public string ProductType { get; set; }
         public string ProductName { get; set; }
+        public string Article { get; set; }
+        public double MinCost { get; set; }
     }
 }
